@@ -1,8 +1,8 @@
 # PixelArtReader
 PixelArtReader converts JPEG pixel art scans drawn on special graph paper into clean PNG pixel art images, complete with automatic color remapping!
 
-![Demonstration](https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/pixelreader_demo.png)
-<h3 align="center">PixelReader</h3>
+![Demonstration](https://github.com/LPBeaulieu/PixelArtReader/blob/main/GitHub%20Images/PixelArtReader%20Repo%20Screenshot.png)
+<h3 align="center">PixelArtReader</h3>
 <div align="center">
   
   [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPLv3.0-brightgreen.svg)](https://github.com/LPBeaulieu/Handwriting-OCR-ScriptReader/blob/main/LICENSE)
@@ -13,7 +13,7 @@ PixelArtReader converts JPEG pixel art scans drawn on special graph paper into c
 
 ---
 
-<p align="left"> <b>PixelReader</b> is a tool enabling you to convert scanned handwritten pages (in JPEG image format) of some pixel art that you have transcribed into numeric format into digital text format, which itself is then used to generate a clean and crisp pixel art PNG image! A neat functionality of <b>PixelReader</b> is that the typos (square dot grid cells containing mistakes, which are filled in with ink) automatically get filtered out, and do not appear in the final text file. You can print out your own smart notebook pages with black squares at the top of the pages to automatically correct any page tilt of the scanned images either by using PrintANotebook (see https://github.com/LPBeaulieu/Notebook-Maker-PrintANotebook, and the "Usage" section below), or the A4 or US Letter notebook pages with 0.13 inch dot spacing found in the zipped release folder. Simply print the PDF document in duplex landscape mode, flipping on the short side, and make sure to disable any page resizing when printing the pages in order to have accurate dot spacing.<br>
+<p align="left"> <b>PixelArtReader</b> is a tool enabling you to convert scanned JPEG pages of pixel art drawn on a special graph gridinto crisp pixel art PNG images! It also allows you to automatically remap the detected colors in your drawings to any colors of your choosing!<br>
 
 My tests with close to 5,000 characters of training data (8 half-letter pages with 0.13 inch dot spacing and double line spacing) consistently gave me an <b>OCR accuracy of around 99.8%!</b>
 <br> 
