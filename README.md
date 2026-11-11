@@ -54,13 +54,13 @@ py -m pip install Pillow
 py -m pip install numpy
 ```
 
-<b>Step 6</b>- Create the "Scans" folder in your working folder:
+<b>Step 6</b>- Create the "Scans" folder in your working folder, and the "Color Key" subfolder within the "Scans" folder:
 ```
 mkdir "Scans" 
-mkdir "Training&Validation Data" 
+mkdir "Scans\Color Key" 
 ```
 
-<b>Step 7</b>- You're now ready to use <b>PixelReader</b>! 🎉
+<b>Step 7</b>- You're now ready to use <b>PixelArtReader</b>! 🎉
 
 ## 🎈 Usage <a name="usage"></a>
 First off, you will need to print some <b>ScriptReader</b> notebook pages, which are special in that they are dot grid pages with line spacing in-between
