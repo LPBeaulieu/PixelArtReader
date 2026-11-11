@@ -1,15 +1,11 @@
 # PixelArtReader
 PixelArtReader converts JPEG pixel art scans drawn on special graph paper into clean PNG pixel art images, complete with automatic color remapping!
 
-# PixelReader
-PixelReader allows you to perform handwriting Optical Character Recognition (OCR) on some pixel art that you have transcribed in numeric format!
-
 ![Demonstration](https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/pixelreader_demo.png)
 <h3 align="center">PixelReader</h3>
 <div align="center">
   
   [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPLv3.0-brightgreen.svg)](https://github.com/LPBeaulieu/Handwriting-OCR-ScriptReader/blob/main/LICENSE)
-  [![GitHub last commit](https://img.shields.io/github/last-commit/LPBeaulieu/Handwriting-OCR-ScriptReader)](https://github.com/LPBeaulieu/Handwriting-OCR-ScriptReader)
   ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
   ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
   
