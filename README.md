@@ -13,7 +13,7 @@ PixelArtReader converts JPEG pixel art scans drawn on special graph paper into c
 
 ---
 
-<p align="left"> <b>PixelArtReader</b> is a tool enabling you to convert scanned JPEG pages of pixel art drawn on a special graph gridinto crisp pixel art PNG images! It also allows you to automatically remap the detected colors in your drawings to any colors of your choosing!<br>
+<p align="left"> <b>PixelArtReader</b> is a tool enabling you to convert scanned JPEG pages of pixel art drawn on special graph grid pages into crisp pixel art PNG images! It also allows you to automatically remap the detected colors in your drawings to any colors of your choosing!<br>
 
 My tests on about 3500 little squares within the 65x65 graph paper grid pages consistently gave me an <b>accuracy of around 99.8+%!</b>
 <br> 
@@ -39,34 +39,24 @@ allow to run a copy of <b>PixelArtReader</b> on a local computer.
 
 Start by holding the "Shift" key while right-clicking in your working folder, then select "Open PowerShell window here" to access the PowerShell in your working folder and enter the commands described below.
 
-<b>Step 1</b>- Install <b>PyTorch</b> (Required Fastai library to convert images into a format usable for deep learning) using the following command (or the equivalent command found at https://pytorch.org/get-started/locally/ suitable to your system):
-```
-pip3 install torch torchvision
-```
-
-<b>Step 2</b>- Install the <i>CPU-only</i> version of <b>Fastai</b>, which is a deep learning Python library. The CPU-only version suffices for this application, as the character images are very small in size:
-```
-py -m pip install fastai
-```
-
-<b>Step 3</b>- Install <b>OpenCV</b> (Python library for image segmentation):
+<b>Step 1</b>- Install <b>OpenCV</b> (Python library for image segmentation):
 ```
 py -m pip install opencv-python
 ```
 
-<b>Step 4</b>- Install <b>alive-Progress</b> (Python module for a progress bar displayed in command line):
-```
-py -m pip install alive-progress
-```
-
-<b>Step 5</b>- Install <b>Pillow</b> (Python module for processing and generating PNG files):
+<b>Step 2</b>- Install <b>Pillow</b> (Python module for processing and generating PNG files):
 ```
 py -m pip install Pillow
 ```
 
-<b>Step 6</b>- Create the folders "Training&Validation Data" and "OCR Raw Data" in your working folder:
+<b>Step 3</b>- Install <b>NumPy</b> (Python module for processing the pixel data within your JPEG scans):
 ```
-mkdir "OCR Raw Data" 
+py -m pip install numpy
+```
+
+<b>Step 6</b>- Create the "Scans" folder in your working folder:
+```
+mkdir "Scans" 
 mkdir "Training&Validation Data" 
 ```
 
