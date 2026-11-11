@@ -63,6 +63,7 @@ mkdir "Scans\Color Key"
 <b>Step 7</b>- You're now ready to use <b>PixelArtReader</b>! 🎉
 
 ## 🎈 Usage <a name="usage"></a>
+
 **Getting Started:**
 
 - PixelArtReader allows you to digitize your pixel art drawn on special 65x65 square graph paper sheets that allow the code to determine the location of every square cell in the grid. The code will then extract every square cell's pixel information, in order to predict which color they were drawn in relative to a color key that you will provide by following these steps: 
@@ -83,11 +84,13 @@ mkdir "Scans\Color Key"
 
 6- Should you like the colors of the pixel art drawing to automatically be remapped to another set of colors, you would then need to create a CSV file with "UTF-8" encoding, a comma (",") as the field delimiter, and a double quote ("") as the string delimiter in the same folder as the "PixelArtReader.py" code file or its related executable file.
 
+![CSV File Example](https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/CSV_file_info.png)<hr>
+
 The CSV file should contain the color key color number in the first column, and the RGBA values (one R, G, B or A value per cell) or Hex codes (in the second column only) afterwards for the remapped colors. **You should include the remapped colors in the same order as you included them in the scanned color key, with the addition of the color you would like the white page color to remap to as the last color in the CSV file**.
 
 For example, if your pixel art drawing used four colors when excluding the page color, and you wanted to remap the white page color to the fde0fa Hex code, you would include it as the last color, as illustrated below. When providing RGBA and Hex codes values, if you omit the transparency channel A (or the last two characters of the 8-character Hex code), the code will automatically add full opacity (A value of 255, or FF last two characters for the Hex code).
 
-Spreadsheet columns:	A(Color number)	B(R or Hex code)	C(G)		D(B)		E(A) 
+Spreadsheet columns: A(Color number), B(R or Hex code), C(G), D(B),	E(A) 
 			
 			1		241			102		135		255
 			2		164			220		156	
@@ -171,55 +174,9 @@ This menu will allow you to specify the settings that will help the code locate 
 - The 'Paper Color Filter Threshold', with possible values spanning from 0 to 255, inclusively, will determine the R, G and B value cutoff point above which the pixels on the brightness- and contrast-adjusted image will be set to 255, with the other pixels remaining the same. For example, a threshold of 245 would set all the R, G and B pixel values lighter than it (greater than 245) to 255 and the other R, G and B pixel values would be unchanged (default setting: 255, or no changes).
 
 - The 'Grayscale Mode' will determine whether or not the Grayscale Mode is enabled, which leads to faster computation times if your drawing was either drawn or scanned in grayscale (default setting: False, or OFF).
-
-
-And that's it! Happy drawing!
-
-![Grid pages usage](https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/pixelreader_demonstration.png)<hr>
-In the image above, you can notice that **the handwritten page contains a flattened version (a continuous string of text) of the OCR text file**. While the digits 0-9 and "space" characters (empty cells) encode the color of the pixels associated with these characters, the "L" and "P" characters have a different function. These latter characters designate line ("L") and page ("P") breaks, where a line break fills all the remaining cells up to the width of the pixel art canvas with spaces, and the page breaks signify that a new pixel art image is about to start. If your row already contains a full complement of characters like the sixth row in the first 16x16 pixel image (1444444444444441), which already contains 16 characters, then you do not need to add an "L" character to indicate that you will now be encoding the seventh row of pixels, because the code keeps track of the column index and automatically moves to the next line for you. However, I find that adding the "L" characters helps me check for mistakes after completing the transcription of each row of pixels, as I can easily locate the start of the row and count the number of characters. In my case, I printed a sheet of 1 mm engineering graph paper on a transparency and drew my pixel art sketches with dry-erase markers (see the following image: https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/pixelreader_demo.png). After transcribing each row of the pixel art drawing in numeric format, I proofread the numbers encoding that row of pixels to make sure that there were no mistakes. **You really do want to check your work at the end of every row of your pixel art reference when handwriting the numbers, as each cell will make its way in your image, mistake or not.** Notice that the first line of the text file only contains an "L". That is because the "L" character tells the code that the remaining pixels in that row are all comprised of the color associated with the "space" character (here white pixels, as can be seen in the PNG file). Also notice the 16th line of the text file (last row of pixels of the frog image) only contains an "L", followed by a "P" character. The "L" is required to tell the code that all of the pixels in that row are white, and the "P" indicates that a page break should be inserted. **The "P" character isn't tied to any color and therefore must be placed *after* the "L" to insert a page break at the *end* of the row.** <br><br>
-
-There are two different Python code files that are to be run in sequence once you have your OCR mode:<br><br>
-<b>File 1: "get_predictions.py"</b>- This code will perform OCR on JPEG images of scanned handwritten text (at a resolution of 300 dpi and with the US Letter or A4 page size setting) that you will place in the folder "OCR Raw Data". 
-
-When scanning the <b>ScriptReader</b> notebook pages generated with PrintANotebook, you would ideally need to scan them with a multi-page scanner. Select 300 dpi resolution, JPEG file format, as well as the US Letter or A4 size setting. When scanning the handwritten pages, make sure that you orient the pages such that you <b>first scan the odd pages (right-hand pages)</b>. 
-
-When scanning in <b>duplex mode</b> (two-sided scans), no special measures need to be taken with respect to the JPEG file names, as long as they all share the same base file name and only differ by the numbered suffix that will be added by the scanner (e.g., "my_text.jpg", "my_text0001.jpg", etc.). 
-
-However, when scanning the pages in <b>simplex mode</b> (one-sided scans), first scan the right-hand pages by specifying a <b>file name that doesn't start with "back"</b> (more on that in a bit). <b>Once the odd pages are scanned</b>, you would simply <b>recover the stack of pages without reordering it and scan the reverse pages with the same file name, but now preceded by "back_"</b>. The code will automatically assemble the left- and right-hand pages in the right order when performing OCR predictions, so you can just scan the recovered stack of pages as-is without reordering it. For example, your first scanned right-hand page file name would be "my_text-.jpg" and your first scanned left-hand page (the back side of the last odd page) file name would be "back_my_text-.jpg". <b>Should you have scanned the JPEG files in simplex mode (one-sided scans), you will then need to pass in the "simplex" argument when running the "get_predictions.py" Python script or the corresponding executable file</b>.
-
-The OCR prediction results for each page will be added in sequence to the "my_text.txt" file within the "my_text" subfolder of the "OCR Predictions" folder. **Remember that you can only use one resolution throughout the scanned pages in a given batch**. Should you need to process pixel art images of different resolutions, simply scan the pages with the same resolution together and submit them together to the Python scripts "get_predictions.py" and "txt2png.py" (or the corresponding executable files).
- 
-To run the script, you would need to hold the "Shift" key down while right-clicking in the working folder and select the "Open PowerShell window here" option. Then enter the following command, including the dot spacing (adjust to however many inches are between your dots in your notebook pages) and number of empty lines between the lines of dot grids (again, adjust to your own notebook pages). Also, you will need to either provide the resolution as a parenthesized expression in your JPEG file names (e.g., "my_text_(48x48)-") or by passing the width and height after the "resolution:" argument when running the "get_predictions.py" code:
-```
-py get_predictions.py "dot_spacing:0.13" "lines_between_text:2" "resolution:48x48"
-```
-If your PC runs on Windows version 10 or later with a x86-64 architecture, then you will be able to run the compiled version of the Python script (see instructions above on how to download and extract the release) in a similar way (opening a PowerShell window in the extracted folder containing the "get_predictions_Win10_x86_64.exe" executable file:
-```
-./get_predictions_Win10_x86_64 "dot_spacing:0.13" "lines_between_text:2" "resolution:48x48"
-```
-When using A4 smart notebook pages, make sure that you also pass in the "A4" parameter when running the Python script or executable files:
-```
-py get_predictions.py "dot_spacing:0.13" "lines_between_text:2" "resolution:48x48" "A4"
-./get_predictions_Win10_x86_64 "dot_spacing:0.13" "lines_between_text:2" "resolution:48x48" "A4"
-```
 <br><br>
-
-![Text file formatting tips](https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/character_spacing.png)<hr>
-Here are some formatting tips to make the OCR Text files more legible when editing them to correct OCR mistakes (more on that in a bit). First, **select all characters and apply bold formatting**. Then, **with the characters still selected, increase the character horizontal spacing**. In LibreOffice, you will need to access the "Format" menu, select the "Character" option, click on the "Position" tab, and then set the character spacing to something like 4 pt if your font is 10 pt Liberation Mono (monospaced fonts are a must for pixel art!). Finally, **select each of your different digits in turn and then hit "Ctrl+F" and click on "Find All" to highlight all of these digits. Then change the font color to the corresponding color for that digit** (e.g., green for 4 in my images).<br><br>
-
-<b>File 2: "txt2png.py"</b>- This code will proofread your TXT files for common issues like rows containing too many characters (a number of characters exceeding your pixel art canvas width) and then generate your PNG file by converting each digit or space character to its corresponding encoded color found in the "color_key.csv" Comma-Separated Value (CSV) file.<br><br> 
-
-![CSV File Configuration](https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/CSV_file_configuration.png)<hr>
-You will need to create a CSV file with "UTF-8" encoding, a comma (",") as the field delimiter, and a double quote ('"') as the string delimiter in the same folder as the "txt2png.py" code file or its related executable file.<br><br>
-
-![CSV File Example](https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/CSV_file_info.png)<hr>
-The CSV file should contain the digits 0-9 plus the "space" categories in the first column, and then the RGBA values (one R, G, B or A value per cell) or Hex codes (in the second column only) afterwards for the color categories that you will be using. In the example illustrated above, some digits (0 and 5-9) do not have any color information and that is fine. The "txt2png.py" code will let you know if an image within your text file contains digits that do not have colors associated with them, and you could then either add the color to your CSV file if you forgot to do so, or change the digit to the right one if there was an OCR mistake. On the other hand, it might be easier to correct most OCR errors directly in the generated PNG file, so you might want to specify colors for each number (maybe make the colors you are not using contrast starkly against the colors you are actually using, such that you could locate OCR mistakes in the PNG files more readily). If you do not specify a value for the transparency channel "A" (the value in the fifth colum in gray of the CSV file), then full opacity (255) will be selected for that color (if you look at the black color for the category 1, you will notice that the code has indeed made it completely opaque with an "A" channel value of 255 in the PowerShell window). Any Hex codes will be converted into RGB by the code, as was the case for the green color in the color category 4 in the example above. While the color associated with an empty cell ("space" character in the text file) can be set to anything in the CSV file, I have selected an opaque white color (RGBA: 255, 255, 255, 255) in my demonstration, as I wanted the images to look opaque, though you could just as well select an "A" value of zero for a fully transparent color.<br><br>
-
-![OCR error correction](https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/OCR_error.png)<hr>
-While OCR errors resulting in a digit being changed to another digit may be best handled by modifying the PNG files directly, some OCR mistakes involving "L" or "P" characters will result in the loss of a line ("L") or page ("P") break if these characters get swapped for a digit or a space, for instance. In the example above, the topmost frog is the ideal frog, while the frog below it is less so. While the final character in row 3 is normally an "L", signifying a line break that will fill up the remaining cells of the row with spaces (here two more spaces will be added), the bottom frog has an OCR error that changed that "L" for a "1". Consequently, the code "ate up" the first space of the next line to make up for the missing character on the line, which ends up making rows 3 and 4 look staggered. To correct this, you would need to revert the erroneous 1 back to an "L", followed by deleting the extra space at the end of row 3 and adding a space 
-at the start row 4. Here I have altered the text file to create an example of an OCR error and I have therefore removed the parenthesized expression indicating the pixel resolution at the end of the text file. **Please always leave the parenthesized resolution "(widthxheight)" at the end of the text file, as it is required for the "txt2png.py" code to determine where an image ends and another begins and when to automatically add a line break, and the code would prompt you for a "resolution:widthxheight" argument when running the "txt2png.py" code should you have removed the parenthesized resolution from the text file**.<br><br>
     
-<b>Well there you have it!</b> You're now ready to convert your numerically-encoded handwritten pixel art text into crisp PNG files! You can now draw/write at the cottage or in the park without worrying about your laptop's battery life and still get your images polished up in digital form in the end! 🎉📖
+<b>Well there you have it!</b> Happy drawing! 🎉📖
   
   
 ## ✍️ Authors <a name = "author"></a>
