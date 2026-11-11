@@ -59,7 +59,7 @@ mkdir "Scans\Color Key"
 
 ## 🎈 Usage <a name="usage"></a>
 
-- PixelArtReader allows you to digitize your pixel art drawn on special 65x65 square graph paper sheets that allow the code to determine the location of every square cell in the grid. The code will then extract every square cell's pixel information, in order to predict which color they were drawn in relative to a color key that you will provide by following these steps: 
+PixelArtReader allows you to digitize your pixel art drawn on special 65x65 square graph paper sheets that allow the code to determine the location of every square cell in the grid. The code will then extract every square cell's pixel information, in order to predict which color they were drawn in relative to a color key that you will provide by following these steps: 
 
 1- Select the option 2 from the PixelArtReader main menu ("Generate PDF Graph Paper Template With Current Settings") in order to generate your printable 65x65 grid PDF template. Print at least two copies of this PDF document, as you will need one for the color key, and one or more for your pixel art drawing (see the **Pixel Art Scale and Color Settings Menu** section below for more on pixel art drawings that span more than one 65x65 grid). Should you need to print the grid in A4 format or change any other layout settings, head over to the **Graph Paper Grid Layout Settings Menu** section down below for more details on this.
 
