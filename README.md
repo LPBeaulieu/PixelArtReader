@@ -70,7 +70,7 @@ mkdir "Scans\Color Key"
 
 1- Select the option 2 from the PixelArtReader main menu ("Generate PDF Graph Paper Template With Current Settings") in order to generate your printable 65x65 grid PDF template. Print at least two copies of this PDF document, as you will need one for the color key, and one or more for your pixel art drawing (see the **Pixel Art Scale and Color Settings Menu** section below for more on pixel art drawings that span more than one 65x65 grid). Should you need to print the grid in A4 format or change any other layout settings, head over to the **Graph Paper Grid Layout Settings Menu** section down below for more details on this.
 
-2- You will need to color in the five first squares of sequential rows in a blank 65x65 grid with each color of your pixel art drawing, excluding the white page color. For example, should you have used red, green, blue and black, you would fill the first five squares of the first four rows of the 65x65 grid as follows:
+2- You will need to color in the five first squares of sequential rows in a blank 65x65 grid with each color of your pixel art drawing, excluding the white page color. For example, should you have used red, green, blue and black, you would fill the first five squares of the first four rows of the 65x65 grid as follows (please consult the :
 	Row 1: RRRRR (5 red squares, starting at the first square on the left)
 	Row 2: GGGGG (5 green squares, starting at the first square on the left)
 	Row 3: UUUUU (5 blue squares, starting at the first square on the left)
@@ -84,19 +84,10 @@ mkdir "Scans\Color Key"
 
 6- Should you like the colors of the pixel art drawing to automatically be remapped to another set of colors, you would then need to create a CSV file with "UTF-8" encoding, a comma (",") as the field delimiter, and a double quote ("") as the string delimiter in the same folder as the "PixelArtReader.py" code file or its related executable file.
 
-![CSV File Example](https://github.com/LPBeaulieu/Pixel-Art-OCR-PixelReader/blob/main/GitHub%20Images/CSV_file_info.png)<hr>
-
 The CSV file should contain the color key color number in the first column, and the RGBA values (one R, G, B or A value per cell) or Hex codes (in the second column only) afterwards for the remapped colors. **You should include the remapped colors in the same order as you included them in the scanned color key, with the addition of the color you would like the white page color to remap to as the last color in the CSV file**.
 
-For example, if your pixel art drawing used four colors when excluding the page color, and you wanted to remap the white page color to the fde0fa Hex code, you would include it as the last color, as illustrated below. When providing RGBA and Hex codes values, if you omit the transparency channel A (or the last two characters of the 8-character Hex code), the code will automatically add full opacity (A value of 255, or FF last two characters for the Hex code).
-
-Spreadsheet columns: A(Color number), B(R or Hex code), C(G), D(B),	E(A) 
-			
-			1		241			102		135		255
-			2		164			220		156	
-			3		6cd7f3
-			4		69			69		69
-			5		fde0fa
+![CSV File Example](https://github.com/LPBeaulieu/PixelArtReader/blob/main/GitHub%20Images/PixelArtReader%20Color%20Remapping%20Screenshot.png)<hr>
+For example, if your pixel art drawing used four colors when excluding the page color, and you wanted to remap the white page color to the fde0fa Hex code, you would include it as the last color, as illustrated above in the selected row. When providing RGBA and Hex codes values, if you omit the transparency channel A (or the last two characters of the 8-character Hex code), the code will automatically add full opacity (A value of 255, or FF last two characters for the Hex code).
 
 7- Once you have configured the settings to your liking, you may select the option 1 of the main menu ("Generate PNG Files with Current Settings") in order to generate PNG pixel art files from your hand-drawn pixel art scans.
 
