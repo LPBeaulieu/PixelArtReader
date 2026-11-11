@@ -100,7 +100,7 @@ For example, if your pixel art drawing used four colors when excluding the page 
 <br><br>
 
 The sections below will describe each of the three submenus that may be accessed from the main menu.
-
+<br><br>
 **Pixel Art Scale and Color Settings Menu**
 
 This menu will allow you to specify the settings for the scale of your pixel art drawing and set the number of different colors used in its creation.
