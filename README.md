@@ -20,15 +20,10 @@ My tests on about 3500 little squares within the 65x65 graph paper grid pages co
 </p>
 
 ## 📝 Table of Contents
-- [Dependencies / Limitations](#limitations)
 - [Getting Started](#getting_started)
 - [Usage](#usage)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
-
-## ⛓️ Dependencies / Limitations <a name = "limitations"></a>
-
-
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
