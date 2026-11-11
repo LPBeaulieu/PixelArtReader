@@ -116,7 +116,7 @@ This menu will allow you to specify the settings for the scale of your pixel art
  
 - Should you want to have the code automatically merge several 65x65 grids to make up a larger pixel art project, you would need to number the JPEG scans in a sequential way, with the 65x65 grids making up the width being scanned first, before moving on to the next row of panels. For example, for a 170x96 pixel art canvas, the files would be ordered as follows: 
     
-	Pixel At Canvas Width: 170 squares (3 65x65 grids)
+		Pixel At Canvas Width: 170 squares (3 65x65 grids)
     	Pixel At Canvas Height: 96 squares (2 65x65 grids)
 
     	Here is the order in which the scans will 
