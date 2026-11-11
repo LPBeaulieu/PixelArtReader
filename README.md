@@ -85,6 +85,7 @@ For example, if your pixel art drawing used four colors when excluding the page 
 7- Once you have configured the settings to your liking, you may select the option 1 of the main menu ("Generate PNG Files with Current Settings") in order to generate PNG pixel art files from your hand-drawn pixel art scans.
 <br><br>
 
+
 **General Considerations:**
 
 - The hand-drawn pixel art needs to have good color coverage and homogeneity. I tried using erasable colored pencils on copy paper, but there was too much white showing through, resulting in some squares being much lighter than others. I think such erasable colored pencils would be useful to sketch out your pixel art by coloring in the squares very lightly, followed by coloring them in with very closely-related colors using regular colored pencils. The same process would need to be applied to the color key. For the frog illustration at the top of the **PixelArtReader** GitHub repo, I have used dry-erase markers on copy paper for the red, green and blue and 0.7 mm HB mechanical pencil leads for the black squares. If you look at the drawing carefully, you will notice that while there is good color coverage, the drawing is by no means flawless and the code still performed well enough, despite there being no brightness, contrast nor page color filters applied in this case.
